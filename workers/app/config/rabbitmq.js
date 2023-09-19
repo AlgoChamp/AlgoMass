@@ -1,37 +1,36 @@
-const amqp = require('amqplib/callback_api')
-import { createFiles } from '../app.js'
+const amqp = require('amqplib');
+const { createFiles } = require('../app');
 
-const QUEUE_NAME = 'judge'
-const connection = amqp.connect(['amqp://rabbitmq:5672']);
+const QUEUE_NAME = 'judge';
+let channel;
+// const connection = amqp.connect('amqp://localhost:5672');
+const test = async () => {
+  console.log('hello before connection connects');
+  const connection = await amqp.connect('amqp://rabbit:5672');
 
-connection.on('connect', function () {
-    console.log('Connected!');
-});
+  connection.on('connect', () => console.log('Connected'));
+  connection.on('disconnect', (err) => console.log('Disconnected ', err));
 
-connection.on('disconnect', function (err) {
-    console.log('Disconnected.', err);
-});
+  // Set up a channel listening for messages in the queue.
+  channel = await connection.createChannel();
+
+  const result = await channel.assertQueue(QUEUE_NAME);
+  console.log('before chanel consumes');
+  channel.consume(
+    QUEUE_NAME,
+    (data) => {
+      console.log('data', data);
+      onMessage(data);
+    },
+    { noAck: true }
+  );
+};
+
+test();
 
 const onMessage = (data) => {
-
-    let message = JSON.parse(data.content.toString());
-    //console.log(message);
-    createFiles(message, channelWrapper, data);
-}
-
-// Set up a channel listening for messages in the queue.
-const channelWrapper = connection.createChannel({
-    setup: function (channel) {
-        // `channel` here is a regular amqplib `ConfirmChannel`.
-        return Promise.all([
-            channel.assertQueue(QUEUE_NAME, { durable: true }),
-            channel.prefetch(1),
-            channel.consume(QUEUE_NAME, onMessage)
-        ]);
-    }
-});
-
-channelWrapper.waitForConnect()
-    .then(function () {
-        console.log("Listening for messages");
-    });
+  console.log('message received');
+  let message = JSON.parse(data.content.toString());
+  //console.log(message);
+  createFiles(message, channel, data);
+};

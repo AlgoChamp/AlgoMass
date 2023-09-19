@@ -1,8 +1,10 @@
-FROM ubuntu:16.04
+FROM ubuntu:22.04
 RUN apt-get update -y
 RUN apt-get install curl vim sudo build-essential -y
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash
-RUN apt-get install nodejs -y
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+  && apt-get update \
+  && apt-get install -y nodejs \
+  && npm install --global yarn@1.22.10
 RUN node -v
 RUN npm -v
 
