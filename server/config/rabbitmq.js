@@ -1,7 +1,7 @@
 const amqp = require('amqplib/callback_api');
 const QUEUE_NAME = "judge";
 
-const connection = await amqp.connect("amqp://localhost:5672");
+const connection = await amqp.connect(["amqp://rabbitmq:5672"]);
 
 connection.on('connect', ()=>  console.log("Connected"));
 connection.on('disconnect', (err)=>console.log("Disconnected ", err));
