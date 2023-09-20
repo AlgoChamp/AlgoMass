@@ -1,47 +1,35 @@
 'use client';
+import HomeNavBar from '../components/home-navbar';
+//import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState, useRef, FormEvent } from 'react';
-import UserNavBar from '../components/user-navbar';
+import { useState, FormEvent } from 'react';
 
 interface SignUpState {
-  username: string;
+  email: string;
   password: string;
+  confirmPassword: string;
   error: string;
 }
 
 const SignUp = () => {
   const [state, setState] = useState<SignUpState>({
-    username: '',
+    email: '',
     password: '',
+    confirmPassword: '',
     error: '',
   });
-  const { username, password, error } = state;
 
-  const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
+  const { email, password, confirmPassword, error } = state;
+  //const router = useRouter();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
     setState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Your form submit logic here
-  };
-
-  const dismissError = () => setState((prev) => ({ ...prev, error: '' }));
-
-  const inputStyle = {
-    padding: '5px',
-    label: { padding: '10px', display: 'inline-block', width: '100px' },
-    input: {
-      padding: '7px 25px',
-      background: '#191919',
-      outline: 'none',
-      color: '#fff',
-      borderRadius: '30px',
-      border: 'none',
-      fontSize: '14px',
-    },
   };
 
   return (
@@ -49,34 +37,72 @@ const SignUp = () => {
       <Head>
         <title>Sign Up</title>
       </Head>
-      <UserNavBar />
-      <div>
-        <form onSubmit={handleSubmit}>
-          {['username', 'password'].map((field, idx) => (
-            <div key={idx}>
-              <label style={inputStyle.label}>
-                {field.charAt(0).toUpperCase() + field.slice(1)}
-              </label>
-              <input name={field} type={field} onChange={handleInputChange} />
-            </div>
-          ))}
-          <div>
-            <input type='submit' style={inputStyle.input} value='Sign Up' />
+      <HomeNavBar />
+      <div className='h-screen bg-bgblack flex flex-col justify-center items-center'>
+        <form
+          className='w-full max-w-md p-8 border border-red-500 rounded'
+          onSubmit={handleSubmit}
+        >
+          <div className='bg-gray-800 p-6 mb-4'>
+            <label className=' text-softred block red_text_nav text-sm mb-2'>
+              Email
+            </label>
+            <input
+              className='shadow border rounded w-full py-2 px-3 text-black leading-tight'
+              name='email'
+              placeholder='Enter your name email'
+              type='email'
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className='bg-gray-800 p-6 mb-4'>
+            <label className=' text-softred block red_text_nav text-sm mb-2'>
+              Set Password
+            </label>
+            <input
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight'
+              name='password'
+              type='password'
+              placeholder='Set a password'
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className='bg-gray-800 p-6 mb-6'>
+            <label className=' text-softred block red_text_nav text-sm mb-2'>
+              Confirm Password
+            </label>
+            <input
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight'
+              name='confirmPassword'
+              type='password'
+              placeholder='Confrim your password'
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className='bg-gray-800 p-6'>
+            <button
+              type='submit'
+              className='border border-red-500 hover:bg-softred hover:text-bgblack py-1 px-4 ml-4 rounded'
+            >
+              Sign Up
+            </button>
           </div>
           {error && (
-            <div>
-              <span onClick={dismissError}>
+            <div className='mt-4 text-red-600 bg-gray-800 p-6'>
+              <span onClick={/*dismissError*/ () => {}}>
                 {error},{' '}
-                <a href='#' onClick={dismissError}>
+                <a
+                  href='#'
+                  onClick={/*dismissError*/ () => {}}
+                  className='text-red-500 hover:underline'
+                >
                   back
                 </a>
               </span>
             </div>
           )}
+          <Link href='/sign-in'>Already have an account?</Link>
         </form>
-        <p>
-          Test Account: <code>admin</code> Password: <code>admin</code>
-        </p>
       </div>
     </>
   );
