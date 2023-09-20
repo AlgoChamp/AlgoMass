@@ -1,6 +1,9 @@
 import HomeNavBar from './components/home-navbar';
+//import { options } from './api/auth/[...nextauth]/options';
+//import { getServerSession } from 'next-auth';
 
 const Home = () => {
+  //const session = await getServerSession(options);
   return (
     <main className='h-screen bg-bgblack'>
       <HomeNavBar />
