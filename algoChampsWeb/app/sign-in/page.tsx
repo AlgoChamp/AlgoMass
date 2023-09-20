@@ -103,5 +103,5 @@ const SignIn = () => {
 		</>
 	);
 };
-
+//potential name switch:AlgoMasters, AlgoMelee, AlgoWars
 export default SignIn;
