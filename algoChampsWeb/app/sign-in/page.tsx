@@ -1,5 +1,5 @@
 'use client';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import HomeNavBar from '../components/home-navbar';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -18,7 +18,7 @@ const SignIn = () => {
     error: '',
   });
   const { username, password, error } = state;
-  //const router = useRouter();
+  const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
@@ -27,11 +27,11 @@ const SignIn = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
+		console.log('handlesubmit function', username, password)
     if (username === 'admin' && password === 'admin') {
       // Redirect to the "lobby"
       console.log('this is a truthy login but useRouter err');
-      useRouter().push('/');
+      router.push('/default-room');
     } else {
       setState((prev) => ({ ...prev, error: 'Invalid credentials' }));
     }

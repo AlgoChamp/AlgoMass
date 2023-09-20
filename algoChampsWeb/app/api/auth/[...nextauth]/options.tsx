@@ -24,7 +24,10 @@ export const options: NextAuthOptions = {
         }
       },
       async authorize(credentials) {
-        //just hard code user info for now to test, but would run on the server
+        //just hard code user info for now to test, but would run on the server to get user info from DB
+        console.log('Authorize function called', credentials);
+        console.log('GitHub ID:', process.env.GITHUB_ID);
+				console.log('GitHub Secret:', process.env.GITHUB_SECRET);
         const user = { id: '29', name: 'Jerry', password: 'nextauth' }
         if (credentials?.username === user.name &&
           credentials?.password === user.password) {
@@ -35,7 +38,7 @@ export const options: NextAuthOptions = {
       },
     })
 	],
-	pages: {
-		signIn: '/sign-in',
-	},
+	 pages: {
+	 	signIn: '/default-room',//redirects user after signing in using github
+	 },
 };
