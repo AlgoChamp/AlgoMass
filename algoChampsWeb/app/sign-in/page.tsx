@@ -1,6 +1,6 @@
 'use client';
+import { useRouter } from 'next/router';
 import HomeNavBar from '../components/home-navbar';
-//import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState, FormEvent } from 'react';
@@ -30,10 +30,15 @@ const SignIn = () => {
 
 		if (username === 'admin' && password === 'admin') {
 			// Redirect to the "lobby"
-			router.push('/app/default-room/page');
+			console.log('this is a truthy login but useRouter err')
+			useRouter().push('/');
 		} else {
 			setState((prev) => ({ ...prev, error: 'Invalid credentials' }));
 		}
+	};
+	//
+	const dismissError = () => {
+		null; // or some setError('') with useState?
 	};
 	return (
 		<>
@@ -43,28 +48,30 @@ const SignIn = () => {
 			<HomeNavBar />
 			<div className='h-screen bg-bgblack flex flex-col justify-center items-center'>
 				<form
-					className='w-full max-w-md p-6 border border-red-500 rounded'
+					className='w-full max-w-md p-8 border border-red-500 rounded'
 					onSubmit={handleSubmit}
 				>
 					<div className='bg-gray-800 p-6 mb-4'>
-						<label className='block text-white text-sm font-bold mb-2'>
+						<label className=' text-softred block red_text_nav text-sm mb-2'>
 							Username
 						</label>
 						<input
-							className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight'
+							className='shadow border rounded w-full py-2 px-3 text-gray-400 leading-tight'
 							name='username'
 							type='text'
+							placeholder='Enter username'
 							onChange={handleInputChange}
 						/>
 					</div>
 					<div className='bg-gray-800 p-6 mb-6'>
-						<label className='block text-white text-sm font-bold mb-2'>
+						<label className=' text-softred block red_text_nav text-sm mb-2'>
 							Password
 						</label>
 						<input
 							className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight'
 							name='password'
 							type='password'
+							placeholder='Enter password'
 							onChange={handleInputChange}
 						/>
 					</div>
@@ -90,7 +97,7 @@ const SignIn = () => {
 							</span>
 						</div>
 					)}
-					<Link href='app/sign-up/page.tsx'>Dont have an account?</Link>
+					<Link href='/sign-up'>Don't have an account?</Link>
 				</form>
 			</div>
 		</>

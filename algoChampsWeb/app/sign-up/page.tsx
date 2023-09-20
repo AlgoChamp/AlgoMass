@@ -40,39 +40,42 @@ const SignUp = () => {
 			<HomeNavBar />
 			<div className='h-screen bg-bgblack flex flex-col justify-center items-center'>
 				<form
-					className='w-full max-w-md p-6 border border-red-500 rounded'
+					className='w-full max-w-md p-8 border border-red-500 rounded'
 					onSubmit={handleSubmit}
 				>
 					<div className='bg-gray-800 p-6 mb-4'>
-						<label className='block text-white text-sm font-bold mb-2'>
+						<label className=' text-softred block red_text_nav text-sm mb-2'>
 							Email
 						</label>
 						<input
-							className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight'
+							className='shadow border rounded w-full py-2 px-3 text-black leading-tight'
 							name='email'
+							placeholder='Enter your name email'
 							type='email'
 							onChange={handleInputChange}
 						/>
 					</div>
 					<div className='bg-gray-800 p-6 mb-4'>
-						<label className='block text-white text-sm font-bold mb-2'>
-							Password
+						<label className=' text-softred block red_text_nav text-sm mb-2'>
+							Set Password
 						</label>
 						<input
 							className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight'
 							name='password'
 							type='password'
+							placeholder='Set a password'
 							onChange={handleInputChange}
 						/>
 					</div>
 					<div className='bg-gray-800 p-6 mb-6'>
-						<label className='block text-white text-sm font-bold mb-2'>
+						<label className=' text-softred block red_text_nav text-sm mb-2'>
 							Confirm Password
 						</label>
 						<input
 							className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight'
 							name='confirmPassword'
 							type='password'
+							placeholder='Confrim your password'
 							onChange={handleInputChange}
 						/>
 					</div>
@@ -98,7 +101,7 @@ const SignUp = () => {
 							</span>
 						</div>
 					)}
-					<Link href='/app/sign-in/page.tsx'>Already have an account?</Link>
+					<Link href='/sign-in'>Already have an account?</Link>
 				</form>
 			</div>
 		</>
