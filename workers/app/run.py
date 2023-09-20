@@ -4,7 +4,7 @@ codes = {200:'success',404:'file not found',400:'error',408:'timeout'}
 
 def compile(file,lang):
 
-    if(lang =='python3'):
+    if(lang =='python3' or lang == 'js'):
         return 200
 
     if (os.path.isfile(file)):
@@ -22,6 +22,7 @@ def compile(file,lang):
         return 404
 
 def run(file,input,timeout,lang):
+    print('file ', file)
     cmd='sudo -u judge '
     if lang == 'java':
         cmd += 'java main'
@@ -29,6 +30,8 @@ def run(file,input,timeout,lang):
         cmd += './a.out'
     elif lang=='python3':
         cmd += 'python3 '+ file
+    elif lang == 'js':
+        cmd += 'jest ' + file
 
     r = os.system('timeout '+timeout+' '+cmd+' < '+input + ' > '+testout)
 

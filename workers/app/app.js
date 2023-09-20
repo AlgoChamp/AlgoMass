@@ -1,5 +1,6 @@
 // require('./config/rabbitmq');
 const fs = require('fs');
+const path = require('path')
 const { client } = require('./config/redis');
 const { deleteFolder, execute } = require('./utils');
 const amqp = require('amqplib');
@@ -42,17 +43,20 @@ const extensions = {
   c: 'c',
   java: 'java',
   python3: 'txt',
+  js: 'js'
 };
 
 const runCode = async (apiBody, ch, msg) => {
   try {
     client.set(apiBody.folder.toString(), 'Processing');
-    const command = `python3 run.py ../temp/${apiBody.folder}/source.${
-      extensions[apiBody.lang]
-    } ${apiBody.lang} ${apiBody.timeOut}`;
+    const command = `python3 run.py ../temp/${apiBody.folder}/source.test.${
+      extensions[apiBody.lang]} ${apiBody.lang} ${apiBody.timeOut}`;
     await fs.promises.writeFile(`/temp/${apiBody.folder}/output.txt`, '');
+    console.log('cwd', __dirname)
+    await fs.promises.copyFile(path.resolve(__dirname, './AlgoChampsReporter.js'), `/temp/${apiBody.folder}/AlgoChampsReporter.js`)
+    await fs.promises.copyFile(path.resolve(__dirname, './jest.config.js'), `/temp/${apiBody.folder}/jest.config.js`)
+    console.log("Finished copying jest config file into temp folder")
     console.log('Output.txt created !');
-
     const output = await execute(command);
     const data = await fs.promises.readFile(
       `/temp/${apiBody.folder}/output.txt`,
@@ -80,10 +84,13 @@ const createFiles = async (apiBody, ch, msg) => {
       `/temp/${apiBody.folder}/input.txt`,
       apiBody.input
     );
-    await fs.promises.writeFile(
-      `/temp/${apiBody.folder}/source.${extensions[apiBody.lang]}`,
-      apiBody.src
+
+    const test = await fs.promises.readFile(path.join(__dirname, './__tests__/sum/sum.test.js'),'utf-8')
+    const data = await fs.promises.writeFile(
+      `/temp/${apiBody.folder}/source.test.${extensions[apiBody.lang]}`,
+      apiBody.src + " " + test
     );
+    console.log("test", apiBody.src + test)
     console.log('ready to run code.....');
     runCode(apiBody, ch, msg);
   } catch (error) {
