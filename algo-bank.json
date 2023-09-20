@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Two Sum",
+    "prompt": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.",
+    "example": [
+      "Example 1: Input: nums = [2,7,11,15], target = 9 Output: [0,1] Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].",
+      "Example 2: Input: nums = [3,2,4], target = 6 Output: [1,2]",
+      "Example 3: Input: nums = [3,3], target = 6 Output: [0,1]"
+    ],
+    "imageRef": null
+  },
+  {
+    "name": "Reverse Linked List",
+    "prompt": "Given the head of a singly linked list, reverse the list, and return the reversed list.",
+    "example": null,
+    "imageRef": null
+  },
+  {
+    "name": "Successful Pairs of Spells and Potions",
+    "prompt": "You are given two positive integer arrays spells and potions, of length n and m respectively, where spells[i] represents the strength of the ith spell and potions[j] represents the strength of the jth potion. You are also given an integer success. A spell and potion pair is considered successful if the product of their strengths is at least success. Return an integer array pairs of length n where pairs[i] is the number of potions that will form a successful pair with the ith spell.",
+    "example": [
+      "Example 1: Input: spells = [5,1,3], potions = [1,2,3,4,5], success = 7 Output: [4,0,3] Explanation: - 0th spell: 5 * [1,2,3,4,5] = [5,10,15,20,25]. 4 pairs are successful. - 1st spell: 1 * [1,2,3,4,5] = [1,2,3,4,5]. 0 pairs are successful.- 2nd spell: 3 * [1,2,3,4,5] = [3,6,9,12,15]. 3 pairs are successful. Thus, [4,0,3] is returned.",
+      "Example 2: Input: spells = [3,1,2], potions = [8,5,8], success = 16 Output: [2,0,2 Explanation: - 0th spell: 3 * [8,5,8] = [24,15,24]. 2 pairs are successful. - 1st spell: 1 * [8,5,8] = [8,5,8]. 0 pairs are successful. - 2nd spell: 2 * [8,5,8] = [16,10,16]. 2 pairs are successful. Thus, [2,0,2] is returned."
+    ],
+    "imageRef": null
+  },
+  {
+    "name": "Min Cost Climbing Stairs",
+    "prompt": "You are given an integer array cost where cost[i] is the cost of ith step on a staircase. Once you pay the cost, you can either climb one or two steps. You can either start from the step with index 0, or the step with index 1. Return the minimum cost to reach the top of the floor.",
+    "example": [
+      "Example 1: Input: cost = [10,15,20] Output: 15 Explanation: You will start at index 1. - Pay 15 and climb two steps to reach the top. The total cost is 15.",
+      "Example 2: Input: cost = [1,100,1,1,1,100,1,1,100,1] Output: 6 Explanation: You will start at index 0. - Pay 1 and climb two steps to reach index 2. - Pay 1 and climb two steps to reach index 4. - Pay 1 and climb two steps to reach index 6. - Pay 1 and climb one step to reach index 7. - Pay 1 and climb two steps to reach index 9. - Pay 1 and climb one step to reach the top. The total cost is 6."
+    ],
+    "imageRef": null
+  },
+  {
+    "name": "Counting Bits",
+    "prompt": "Given an integer n, return an array ans of length n + 1 such that for each i (0 <= i <= n), ans[i] is the number of 1's in the binary representation of i.",
+    "example": [
+      "Example 1: Input: n = 2 Output: [0,1,1] Explanation: 0 --> 0 1 --> 1 2 --> 10",
+      "Example 2: Input: n = 5 Output: [0,1,1,2,1,2]Explanation: 0 --> 0 1 --> 1 2 --> 10 3 --> 11 4 --> 100 5 --> 101"
+    ],
+    "imageRef": null
+  },
+  {
+    "name": "Find the Highest Altitude",
+    "prompt": "There is a biker going on a road trip. The road trip consists of n + 1 points at different altitudes. The biker starts his trip on point 0 with altitude equal 0. You are given an integer array gain of length n where gain[i] is the net gain in altitude between points i​​​​​​ and i + 1 for all (0 <= i < n). Return the highest altitude of a point.",
+    "example": [
+      "Example 1: Input: gain = [-5,1,5,0,-7] Output: 1 Explanation: The altitudes are [0,-5,-4,1,1,-6]. The highest is 1.",
+      "Example 2: Input: gain = [-4,-3,-2,-1,4,3,2] Output: 0 Explanation: The altitudes are [0,-4,-7,-9,-10,-6,-3,-1]. The highest is 0."
+    ],
+    "imageRef": null
+  },
+  {
+    "name": "Find Pivot Index",
+    "prompt": "Given an array of integers nums, calculate the pivot index of this array. The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right. If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array. Return the leftmost pivot index. If no such index exists, return -1.",
+    "example": [
+      "Example 1: Input: nums = [1,7,3,6,5,6] Output: 3 Explanation: The pivot index is 3. Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11 Right sum = nums[4] + nums[5] = 5 + 6 = 11",
+      "Example 2: Input: nums = [1,2,3] Output: -1 Explanation: There is no index that satisfies the conditions in the problem statement.",
+      "Example 3: Input: nums = [2,1,-1] Output: 0 Explanation: The pivot index is 0. Left sum = 0 (no elements to the left of index 0) Right sum = nums[1] + nums[2] = 1 + -1 = 0"
+    ],
+    "imageRef": null
+  },
+  {
+    "name": "Find the Difference of Two Arrays",
+    "prompt": "Given two 0-indexed integer arrays nums1 and nums2, return a list answer of size 2 where: answer[0] is a list of all distinct integers in nums1 which are not present in nums2. answer[1] is a list of all distinct integers in nums2 which are not present in nums1. Note that the integers in the lists may be returned in any order.",
+    "example": [
+      "Example 1: Input: nums1 = [1,2,3], nums2 = [2,4,6] Output: [[1,3],[4,6]] Explanation: For nums1, nums1[1] = 2 is present at index 0 of nums2, whereas nums1[0] = 1 and nums1[2] = 3 are not present in nums2. Therefore, answer[0] = [1,3]. For nums2, nums2[0] = 2 is present at index 1 of nums1, whereas nums2[1] = 4 and nums2[2] = 6 are not present in nums2. Therefore, answer[1] = [4,6].",
+      "Example 2: Input: nums1 = [1,2,3,3], nums2 = [1,1,2,2] Output: [[3],[]] Explanation: For nums1, nums1[2] and nums1[3] are not present in nums2. Since nums1[2] == nums1[3] their value is only included once and answer[0] = [3]. Every integer in nums2 is present in nums1. Therefore, answer[1] = []."
+    ],
+    "imageRef": null
+  },
+  {
+    "name": "Unique Number of Occurrences",
+    "prompt": "Given an array of integers arr, return true if the number of occurrences of each value in the array is unique or false otherwise.",
+    "example": [
+      "Example 1: Input: arr = [1,2,2,1,1,3] Output: true Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the same number of occurrences.",
+      "Example 2: Input: arr = [1,2] Output: false",
+      "Example 3: Input: arr = [-3,0,1,-3,1,1,1,-3,10,0] Output: true"
+    ],
+    "imageRef": null
+  }
+]
