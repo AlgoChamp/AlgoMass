@@ -47,12 +47,9 @@ const SignUp = () => {
   return (
     <>
       <Head>
-        <UserNavBar />
         <title>Sign Up</title>
       </Head>
-      <div>
-        <Link href='/'>Go back to landing page</Link>
-      </div>
+      <UserNavBar />
       <div>
         <form onSubmit={handleSubmit}>
           {['username', 'password'].map((field, idx) => (

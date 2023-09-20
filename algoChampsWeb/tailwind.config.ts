@@ -10,6 +10,7 @@ const config: Config = {
     colors: {
       bgblack: 'rgb(33, 37, 41)',
       softred: '#ef4444',
+      green: '#22c55e',
     },
     extend: {
       backgroundImage: {

@@ -4,7 +4,7 @@ const HomeNavBar = () => {
   return (
     <div className='w-screen red_text_nav text-softred black_bg flex justify-between items-center'>
       <Link href='/'>
-        <button className='p-4'>AlgoChamps</button>
+        <button className='p-4 hover:text-green'>AlgoChamps</button>
       </Link>
       <div className='flex items-center p-4'>
         <Link href='/sign-in'>
