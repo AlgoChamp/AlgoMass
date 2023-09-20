@@ -5,7 +5,9 @@ const DefaultRoom = () => {
   return (
     <main className='h-screen bg-bgblack'>
       <HomeNavBar />
-      <IDE />
+      <div className='flex justify-center items-center mt-8'>
+        <IDE />
+      </div>
     </main>
   );
 };
