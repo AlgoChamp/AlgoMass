@@ -5,6 +5,7 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 
 
+
 const DefaultRoom = async () => {
   const session = await getServerSession(options);
   if (!session) {
@@ -13,7 +14,9 @@ const DefaultRoom = async () => {
 	return (
 		<main className='h-screen bg-bgblack'>
 			<HomeNavBar />
+      <div className='flex justify-center items-center mt-8'>
 			<IDE />
+      </div>
 		</main>
 	);
 };
