@@ -57,9 +57,6 @@ const SignUp = () => {
 	// 	console.log('attempting github signin');
 	// 	window.location.href = '/api/auth/signin/github';
 	// };
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
   return (
     <>
       <Head>
@@ -135,88 +132,6 @@ const SignUp = () => {
       </div>
     </>
   );
-=======
-=======
->>>>>>> Stashed changes
-	return (
-		<>
-			<Head>
-				<title>Sign Up</title>
-			</Head>
-			<HomeNavBar />
-			<div className='h-screen bg-bgblack flex flex-col justify-center items-center'>
-				<form
-					className='w-full max-w-md p-8 border border-red-500 rounded'
-					onSubmit={handleSubmit}
-				>
-					<div className='bg-gray-800 p-6 mb-4'>
-						<label className=' text-softred block red_text_nav text-sm mb-2'>
-							Email
-						</label>
-						<input
-							className='shadow border rounded w-full py-2 px-3 text-black leading-tight'
-							name='email'
-							placeholder='Enter your name email'
-							type='email'
-							onChange={handleInputChange}
-						/>
-					</div>
-					<div className='bg-gray-800 p-6 mb-4'>
-						<label className=' text-softred block red_text_nav text-sm mb-2'>
-							Set Password
-						</label>
-						<input
-							className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight'
-							name='password'
-							type='password'
-							placeholder='Set a password'
-							onChange={handleInputChange}
-						/>
-					</div>
-					<div className='bg-gray-800 p-6 mb-6'>
-						<label className=' text-softred block red_text_nav text-sm mb-2'>
-							Confirm Password
-						</label>
-						<input
-							className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight'
-							name='confirmPassword'
-							type='password'
-							placeholder='Confrim your password'
-							onChange={handleInputChange}
-						/>
-					</div>
-					<div className='bg-gray-800 p-6'>
-						<button
-							type='submit'
-							className='border border-red-500 hover:bg-softred hover:text-bgblack py-1 px-4 ml-4 rounded'
-						>
-							Sign Up
-						</button>
-					</div>
-					{error && (
-						<div className='mt-4 text-red-600 bg-gray-800 p-6'>
-							<span onClick={/*dismissError*/ () => {}}>
-								{error},{' '}
-								<a
-									href='#'
-									onClick={/*dismissError*/ () => {}}
-									className='text-red-500 hover:underline'
-								>
-									back
-								</a>
-							</span>
-						</div>
-					)}
-					<Link href='/sign-in'>Already have an account?</Link>
-				</form>
-				<a href='/api/auth/signin/github'>Sign in with GitHub</a>
-			</div>
-		</>
-	);
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 };
 
 export default SignUp;
