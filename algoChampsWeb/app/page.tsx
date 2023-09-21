@@ -1,6 +1,11 @@
 import HomeNavBar from './components/home-navbar';
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import Link from 'next/link';
+=======
+//import { options } from './api/auth/[...nextauth]/options';
+//import { getServerSession } from 'next-auth';
+>>>>>>> Stashed changes
 =======
 //import { options } from './api/auth/[...nextauth]/options';
 //import { getServerSession } from 'next-auth';

@@ -59,6 +59,7 @@ const SignUp = () => {
 	// };
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   return (
     <>
       <Head>
@@ -135,6 +136,8 @@ const SignUp = () => {
     </>
   );
 =======
+=======
+>>>>>>> Stashed changes
 	return (
 		<>
 			<Head>
@@ -210,6 +213,9 @@ const SignUp = () => {
 			</div>
 		</>
 	);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 };
 
