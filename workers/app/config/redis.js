@@ -1,4 +1,5 @@
 const redis = require('ioredis');
+
 let client;
 
 (async () => {
@@ -6,5 +7,4 @@ let client;
 
   client.on('error', (error) => console.error(`Error : ${error}`));
 })();
-
 module.exports = { client };

@@ -1,0 +1,39 @@
+version: '2.3' #Use this version strictly
+services:
+  rabbitmq:
+    image: rabbitmq
+    ports:
+      #Port: 5672 is used by RabbitMQ Server
+      - '5672:5672'
+      #Port: 15672 is used by RabbitMQ Management UI
+      - '15672:15672'
+    restart: always
+  redis-server:
+    image: 'redis'
+    restart: always
+    ports:
+      - '6379:6379'
+      - '8001:8001'
+    depends_on:
+      - rabbitmq
+  server:
+    build: ./server
+    restart: always
+    ports:
+      - '3000:3000'
+    depends_on:
+      - rabbitmq
+      - redis-server
+  worker:
+    build: ./workers
+    restart: always
+    pids_limit: 120 # Max number of processes running in thw container.
+    cpus: 1 # No of CPUs allocated
+    mem_limit: 150M # Hard limit
+    depends_on:
+      - rabbitmq
+      - redis-server
+  algochamps:
+    build: ./algoChampsWeb
+    ports:
+      - '8080:8080'

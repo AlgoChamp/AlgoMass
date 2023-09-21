@@ -1,14 +1,18 @@
-const express = requrie('express');
+const express = require('express');
 const {randomBytes} = require('crypto')
-const { getFromRedis, errorResponse, successResponse} = require('./utils.js')
+const sendMessage = require('./config/rabbitmq')
+const cors = require('cors')
+const { getFromRedis, errorResponse, successResponse} = require('./utils')
 const app = express();
 const PORT = 3000;
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded())
 
 app.post("/submit", async (req,res)=>{
     try {
+        console.log(req.body)
         let data = {
             'src': req.body.src,
             'input': req.body.stdin,
@@ -16,6 +20,7 @@ app.post("/submit", async (req,res)=>{
             'timeOut': req.body.timeout,
             'folder': randomBytes(10).toString('hex')
         }
+        console.log(data)
         await sendMessage(data);
         res.status(202).send(successResponse(`http://localhost:3000/results/${data.folder}`));
     } catch (error) {
