@@ -5,18 +5,18 @@ import Examples from '../components/examples';
 
 const DefaultRoom = () => {
   return (
-    <main className='h-screen bg-bgblack'>
-      <HomeNavBar />
-      <div className='flex flec-col justify-between mt-8'>
-        <Examples />
-        <IDE />
-      </div>
-      <button
-        className='text-softred'
-        onClick={() => console.log('Test button clicked')}
-      ></button>
-    </main>
-  );
+		<main className='h-screen bg-bgblack'>
+			<HomeNavBar />
+			<div className='flex flec-col justify-between mt-8'>
+				<Examples />
+				<IDE />
+			</div>
+			<button
+				className='text-softred'
+				onClick={() => console.log('Test button clicked')}
+			></button>
+		</main>
+	);
 };
 
 export default DefaultRoom;
