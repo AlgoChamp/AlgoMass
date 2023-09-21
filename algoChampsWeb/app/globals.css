@@ -8,14 +8,33 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+  }
+
+  /* Adjusting for the input fields in dark mode */
+  input[type="email"],
+  input[type="text"],
+  input[type="password"] {
+    background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
+    color: rgb(var(--foreground-rgb));    /* White text */
+    border-color: rgba(255, 255, 255, 0.5); /* Slightly transparent white for the border */
+  }
+
+  /* Placeholder text */
+  input[type="text"]::placeholder,
+  input[type="password"]::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Slightly transparent white */
+  }
 }
+
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -32,11 +51,10 @@ body {
 }
 
 .landing_text {
-  font-size: 200px;
-  font-family: 'Caprasimo', cursive;
-  font-family: 'DM Serif Display', serif;
-  font-family: 'Inconsolata', monospace;
+    font-size: 190px;
+    font-family: 'Inconsolata', 'DM Serif Display', 'Caprasimo', monospace, serif;
 }
+
 
 .landing_body {
   font-size: 80px;
