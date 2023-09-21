@@ -62,8 +62,9 @@ const runCode = async (apiBody, ch, msg) => {
       `/temp/${apiBody.folder}/output.txt`,
       'utf-8'
     );
+    const regex = /\n/g
     let result = {
-      output: data,
+      output: data.replace(regex,''),
       stderr: output.stderr,
       status: output.stdout,
       submission_id: apiBody.folder,
