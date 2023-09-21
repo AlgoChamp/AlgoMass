@@ -1,10 +1,8 @@
 .window {
   position: relative;
-  margin: 30px;
   border-radius: 6px;
   background-color: #1a1e22;
   color: #fff;
-  width: 700px;
   height: 400px;
   overflow: hidden;
 }
