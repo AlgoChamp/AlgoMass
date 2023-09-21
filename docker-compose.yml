@@ -33,3 +33,7 @@ services:
     depends_on:
       - rabbitmq
       - redis-server
+  algochamps:
+    build: ./algoChampsWeb
+    ports:
+      - '8080:8080'

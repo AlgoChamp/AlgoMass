@@ -4,7 +4,6 @@ import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
-
 import '../prism-vsc-dark-plus.css';
 import '../editor.css';
 
@@ -14,8 +13,9 @@ const IDE = () => {
   const [code, setCode] = useState(initialCodeSnippet);
 
   const handleRunButtonClick = () => {
+    console.log('button clicked')
     console.log(code);
-    fetch('https://localhost:3000/submit', {
+    fetch('http://localhost:3000/submit', {
       method: 'POST',
       body: JSON.stringify({
         src: code,
@@ -56,6 +56,7 @@ const IDE = () => {
       >
         Run
       </button>
+      <button onClick={() => console.log("Test button clicked")}>Test</button>
     </div>
   );
 };
