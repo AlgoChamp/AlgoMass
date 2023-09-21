@@ -11,6 +11,9 @@ const IDE = () => {
   const initialCodeSnippet = ``;
 
   const [code, setCode] = useState(initialCodeSnippet);
+  const [passed, setPassed] = useState(false);
+
+  let result;
 
   const handleRunButtonClick = async () => {
     console.log('button clicked');
@@ -42,8 +45,16 @@ const IDE = () => {
     redisComp = await redisReq.json();
     redisState = redisData.status;
     // console.log(await data.json())
-
-    console.log(redisComp);
+    result = redisComp.data.output.split();
+    result.forEach((el) => {
+      console.log(el);
+      if (!el.includes('failed')) {
+        setPassed(true);
+      } else {
+        setPassed(false);
+      }
+    });
+    // console.log(redisComp.data.output);
   };
 
   return (
@@ -80,6 +91,13 @@ const IDE = () => {
         >
           Submit
         </button>
+      </div>
+      <div className='flex flex-row font-inconsolata justify-center items-center text-8xl'>
+        {passed ? (
+          <div className='text-green'>PASS</div>
+        ) : (
+          <div className='text-softred'>TRY HARDER</div>
+        )}
       </div>
     </div>
   );

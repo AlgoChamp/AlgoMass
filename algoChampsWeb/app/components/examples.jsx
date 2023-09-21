@@ -1,8 +1,12 @@
-import jsonData from '../../../algo-bank.json';
+'use client';
+import jsonData from '../../algo-bank.json';
+import { useState } from 'react';
 
 const Examples = () => {
   const { name, prompt, example } = jsonData[0];
   const testCases = jsonData[0]['test cases'];
+
+  const [results, setResults] = useState(false);
 
   return (
     <div className='w-1/2 m-2 h-auto font-inconsolata'>

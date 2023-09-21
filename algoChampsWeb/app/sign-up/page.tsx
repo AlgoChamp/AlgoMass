@@ -103,6 +103,7 @@ const SignUp = () => {
           )}
           <Link href='/sign-in'>Already have an account?</Link>
         </form>
+        <a href='/api/auth/signin/github'>Sign in with GitHub</a>
       </div>
     </>
   );

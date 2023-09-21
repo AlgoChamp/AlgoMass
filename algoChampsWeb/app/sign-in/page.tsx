@@ -99,7 +99,6 @@ const SignIn = () => {
           )}
           <Link href='/sign-up'>Don't have an account?</Link>
         </form>
-        <button className='text-softred' onClick={() => console.log("Test button clicked")}>Test</button>
       </div>
     </>
   );
